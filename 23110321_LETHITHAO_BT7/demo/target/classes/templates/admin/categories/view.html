@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+    <title>Chi tiết danh mục</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">
+                    <i class="fas fa-eye"></i> Chi tiết danh mục
+                </h4>
+                <div>
+                    <a th:href="@{/admin/categories/edit/{id}(id=${category.categoryId})}" 
+                       class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Sửa
+                    </a>
+                    <a th:href="@{/admin/categories}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" style="width: 30%;">
+                                        <i class="fas fa-hashtag text-primary"></i> ID:
+                                    </th>
+                                    <td th:text="${category.categoryId}">1</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <i class="fas fa-tag text-primary"></i> Tên danh mục:
+                                    </th>
+                                    <td>
+                                        <strong th:text="${category.name}">Category Name</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <i class="fas fa-align-left text-primary"></i> Mô tả:
+                                    </th>
+                                    <td>
+                                        <span th:text="${category.description ?: 'Không có mô tả'}" 
+                                              th:classappend="${category.description == null} ? 'text-muted fst-italic'">
+                                            Description
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <i class="fas fa-toggle-on text-primary"></i> Trạng thái:
+                                    </th>
+                                    <td>
+                                        <span th:if="${category.status}" class="status-active">
+                                            <i class="fas fa-check-circle"></i> Hoạt động
+                                        </span>
+                                        <span th:unless="${category.status}" class="status-inactive">
+                                            <i class="fas fa-times-circle"></i> Ngừng hoạt động
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h6 class="mb-0"><i class="fas fa-cogs"></i> Thao tác</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a th:href="@{/admin/categories/edit/{id}(id=${category.categoryId})}" 
+                                       class="btn btn-warning">
+                                        <i class="fas fa-edit"></i> Chỉnh sửa
+                                    </a>
+                                    <a th:href="@{/admin/categories/delete/{id}(id=${category.categoryId})}" 
+                                       class="btn btn-danger"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này?')">
+                                        <i class="fas fa-trash"></i> Xóa
+                                    </a>
+                                    <hr>
+                                    <a th:href="@{/admin/categories}" class="btn btn-secondary">
+                                        <i class="fas fa-list"></i> Danh sách
+                                    </a>
+                                    <a th:href="@{/admin/categories/searchpaginated}" class="btn btn-outline-secondary">
+                                        <i class="fas fa-search"></i> Tìm kiếm
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Information Card (Future enhancement) -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6 class="mb-0"><i class="fas fa-info-circle"></i> Thông tin liên quan</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-0">
+                    <i class="fas fa-lightbulb"></i> 
+                    Trong tương lai, đây sẽ là nơi hiển thị các sản phẩm thuộc danh mục này và các thông tin thống kê khác.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+vn\iostar\Model\CategoryModel.class
+vn\iostar\CategoryManagementApplication.class
+vn\iostar\Controller\HomeController.class
+vn\iostar\Repository\CategoryRepository.class
+vn\iostar\Service\Impl\CategoryServiceImpl.class
+vn\iostar\Config\LocaleConfig.class
+vn\iostar\Service\ICategoryService.class
+vn\iostar\Controller\admin\CategoryController.class
+vn\iostar\Entity\CategoryEntity.class

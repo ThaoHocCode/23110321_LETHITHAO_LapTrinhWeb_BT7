@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+    <title>Trang chủ - Category Management System</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Welcome Card -->
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <img th:src="@{/images/student-photo.jpg}" 
+                             alt="Lê Thị Thảo" 
+                             class="rounded-circle border border-primary" 
+                             style="width: 120px; height: 120px; object-fit: cover;"
+                             onerror="this.src='https://via.placeholder.com/120x120/007bff/white?text=LTT'">
+                    </div>
+                    <div class="col-md-9 text-start">
+                        <h2 class="text-primary mb-3">
+                            <i class="fas fa-graduation-cap"></i> Chào mừng đến với Category Management System
+                        </h2>
+                        <p class="lead mb-3">
+                            Hệ thống quản lý danh mục sản phẩm được phát triển bằng Spring Boot và Thymeleaf
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Sinh viên thực hiện:</strong> Lê Thị Thảo</p>
+                                <p class="mb-1"><strong>MSSV:</strong> 23110321</p>
+                                <p class="mb-1"><strong>Lớp:</strong> 231102B</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-1"><strong>Ngành:</strong> Công Nghệ Thông Tin</p>
+                                <p class="mb-1"><strong>Trường:</strong> ĐH Sư Phạm Kỹ Thuật Tp.HCM</p>
+                                <p class="mb-1"><strong>Bài tập:</strong> BT7 - CRUD với Thymeleaf</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Cards -->
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-plus-circle fa-3x"></i>
+                        </div>
+                        <h5 class="card-title">Thêm danh mục</h5>
+                        <p class="card-text">Tạo danh mục sản phẩm mới với thông tin đầy đủ</p>
+                        <a th:href="@{/admin/categories/add}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Thêm mới
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <div class="text-success mb-3">
+                            <i class="fas fa-list fa-3x"></i>
+                        </div>
+                        <h5 class="card-title">Danh sách danh mục</h5>
+                        <p class="card-text">Xem tất cả các danh mục đã tạo trong hệ thống</p>
+                        <a th:href="@{/admin/categories}" class="btn btn-success">
+                            <i class="fas fa-list"></i> Xem danh sách
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <div class="text-info mb-3">
+                            <i class="fas fa-search fa-3x"></i>
+                        </div>
+                        <h5 class="card-title">Tìm kiếm & Phân trang</h5>
+                        <p class="card-text">Tìm kiếm danh mục với tính năng phân trang</p>
+                        <a th:href="@{/admin/categories/searchpaginated}" class="btn btn-info">
+                            <i class="fas fa-search"></i> Tìm kiếm
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-cogs fa-3x"></i>
+                        </div>
+                        <h5 class="card-title">Quản lý</h5>
+                        <p class="card-text">Sửa, xóa và quản lý các danh mục hiện có</p>
+                        <a th:href="@{/admin/categories}" class="btn btn-warning">
+                            <i class="fas fa-cogs"></i> Quản lý
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-code"></i> Công nghệ sử dụng</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-server"></i> Backend:</h6>
+                        <ul class="list-unstyled ms-3">
+                            <li><i class="fab fa-java"></i> Java 17</li>
+                            <li><i class="fas fa-leaf"></i> Spring Boot 3.3.13</li>
+                            <li><i class="fas fa-database"></i> Spring Data JPA</li>
+                            <li><i class="fas fa-layer-group"></i> Hibernate</li>
+                            <li><i class="fas fa-shield-alt"></i> Spring Security</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-desktop"></i> Frontend:</h6>
+                        <ul class="list-unstyled ms-3">
+                            <li><i class="fab fa-html5"></i> Thymeleaf Template Engine</li>
+                            <li><i class="fas fa-layer-group"></i> Thymeleaf Layout Dialect</li>
+                            <li><i class="fab fa-bootstrap"></i> Bootstrap 5</li>
+                            <li><i class="fab fa-font-awesome"></i> FontAwesome Icons</li>
+                            <li><i class="fas fa-globe"></i> Internationalization (i18n)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <h6><i class="fas fa-tools"></i> Chức năng chính:</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled ms-3">
+                                <li><i class="fas fa-check text-success"></i> Create - Thêm danh mục mới</li>
+                                <li><i class="fas fa-check text-success"></i> Read - Xem danh sách và chi tiết</li>
+                                <li><i class="fas fa-check text-success"></i> Update - Cập nhật thông tin</li>
+                                <li><i class="fas fa-check text-success"></i> Delete - Xóa danh mục</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled ms-3">
+                                <li><i class="fas fa-check text-success"></i> Search - Tìm kiếm theo tên</li>
+                                <li><i class="fas fa-check text-success"></i> Pagination - Phân trang dữ liệu</li>
+                                <li><i class="fas fa-check text-success"></i> Responsive Design</li>
+                                <li><i class="fas fa-check text-success"></i> Multi-language Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

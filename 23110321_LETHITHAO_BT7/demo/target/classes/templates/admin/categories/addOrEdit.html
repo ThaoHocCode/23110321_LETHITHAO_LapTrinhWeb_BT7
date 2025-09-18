@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+    <title th:text="${category.isEdit} ? 'Sửa danh mục' : 'Thêm danh mục'">Thêm/Sửa danh mục</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-edit"></i> 
+                    <span th:text="${category.isEdit} ? 'Sửa danh mục' : '#{iotstar.value.addCate}'">Thêm danh mục</span>
+                </h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/admin/categories/saveOrUpdate}" 
+                      th:object="${category}" 
+                      method="post">
+                    
+                    <!-- Hidden fields -->
+                    <input type="hidden" th:field="*{isEdit}">
+                    <input type="hidden" th:field="*{categoryId}" th:if="*{isEdit}">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">
+                                    <i class="fas fa-tag"></i> Tên danh mục <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       th:field="*{name}" 
+                                       id="name" 
+                                       placeholder="Nhập tên danh mục"
+                                       required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                                    Tên danh mục không được để trống
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="status" class="form-label">
+                                    <i class="fas fa-toggle-on"></i> Trạng thái
+                                </label>
+                                <select class="form-select" th:field="*{status}" id="status">
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Ngừng hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="description" class="form-label">
+                            <i class="fas fa-align-left"></i> Mô tả
+                        </label>
+                        <textarea class="form-control" 
+                                  th:field="*{description}" 
+                                  id="description" 
+                                  rows="4" 
+                                  placeholder="Nhập mô tả cho danh mục (không bắt buộc)"></textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a th:href="@{/admin/categories}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Quay lại
+                        </a>
+                        <div>
+                            <button type="reset" class="btn btn-outline-secondary me-2">
+                                <i class="fas fa-undo"></i> Đặt lại
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> 
+                                <span th:text="${category.isEdit} ? 'Cập nhật' : 'Lưu'">Lưu</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Help Card -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6 class="mb-0"><i class="fas fa-info-circle"></i> Hướng dẫn</h6>
+            </div>
+            <div class="card-body">
+                <ul class="mb-0">
+                    <li><strong>Tên danh mục:</strong> Tên của danh mục sản phẩm (bắt buộc)</li>
+                    <li><strong>Mô tả:</strong> Mô tả chi tiết về danh mục (không bắt buộc)</li>
+                    <li><strong>Trạng thái:</strong> Trạng thái hoạt động của danh mục</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
